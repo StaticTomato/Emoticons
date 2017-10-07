@@ -1,0 +1,139 @@
+/*
+	Style Name: style.css
+	Date: 2016
+	Description: Styling
+	Author: Thomas Asheim Smedmann
+*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#pageWrapper {
+	max-width: 940px;
+	min-height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#page {
+	position: absolute;
+	min-height: 100%;
+	left: 0;
+	right: 0;
+}
+
+#pageHeader {
+	
+}
+
+#pageContent {
+	padding-bottom: 116px;
+}
+
+#pageFooter {
+	height: 100px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.modalBox {
+	max-width: 450px;
+}
+
+.emoticonContainer {
+	width: 350px;
+	display: inline-block;
+	margin: 5px;
+}
+
+.wideBtn {
+	width: 174px;
+}
+
+.wideInpt {
+	width: 346px;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltipText {
+    visibility: hidden;
+    width: 130px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container, */
+/* or touch it on a thouch devise */
+.tooltip:hover .tooltipText, .tooltip:focus .tooltipText {
+    visibility: visible;
+}
+
+.emoticonContainer:hover {
+	background-color: gainsboro;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: inline;
+}
+
+.red {
+	color: red;
+}
+
+.yellow {
+	color: yellow;
+}
+
+.green {
+	color: green;
+}
+
+.info {
+	color: black;
+}
+
+.fadeIn {
+	opacity: 0;
+	animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+.fadeOut {
+	opacity: 1;
+	animation-name: fadeOut;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes fadeOut {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}

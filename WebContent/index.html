@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<meta name="description" content="Emoticons" />
+	<meta name="keywords" content="emoticons, Thomas Asheim Smedmann" />
+	<meta name="author" content="Thomas Asheim Smedmann" />	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	
+	<script type="text/javascript" src="script/ajax/ajax.js"></script>
+	<script type="text/javascript" src="script/ajax/ajax-periodic.js"></script>
+	<script type="text/javascript" src="script/model/emoticon.js"></script>
+	<script type="text/javascript" src="script/model/updates.js"></script>
+	<script type="text/javascript" src="script/view/emoticons-ui.js"></script>
+	<script type="text/javascript" src="script/service/emoticon-service.js"></script>
+	<script type="text/javascript" src="script/control/emoticon-controller.js"></script>
+	<script type="text/javascript" src="script/control/controller.js"></script>
+	<script type="text/javascript" src="script/util/validator.js"></script>
+	
+	<script type="text/javascript">
+		
+		"use strict"
+	
+		var app = new Controller();
+		document.addEventListener("DOMContentLoaded",app.start.bind(app),false);
+
+	</script>
+	
+	<title>Emoticons</title>
+	
+</head>
+
+<body>
+
+	<div id="pageWrapper">
+	
+	<div id="page">
+	
+		<div id="pageHeader" class="w3-container w3-center w3-padding-64">
+		
+			<h1>Emoticons</h1>
+			
+		</div>
+		
+		<div id="pageContent" class="w3-container w3-center">
+		
+			<input id="copyField" type="text" class="hidden" value="" />
+			
+			<div><i id="infoIcon" class="fa fa-smile-o" title="Info"></i> <span id="infoBar">Add your emoticon!</span></div>
+		
+			<!-- Edit Emoticon Modal -->
+			<div id="editModal" class="w3-modal">
+			    <div class="modalBox w3-modal-content w3-card-8">
+					<div class="w3-padding w3-center">
+						<span id="exitEdit" class="w3-closebtn w3-container w3-padding-8 w3-display-topright" title="Cancel and close">
+							<i class="fa fa-times"></i>
+						</span>
+						<br>
+						<span id="editInfo" class="red"></span>
+						<h2><input id="eEmo" class="wideInpt w3-center" title="Edit emoticon here" value="1 ┻━┻︵ヽ(`Д´)ﾉ︵ ┻━┻" /></h2>
+						<p>
+							<input id="eDes" class="wideInpt" type="text" placeholder="Description"  value="Flipping tables" title="Edit description here" />
+						</p>
+						<p>
+							<button id="save" class="wideBtn" title="Save" >Save</button>
+							<button id="cancel" class="wideBtn" title="Cancel" >Cancel</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Delete Emoticon Modal -->
+			<div id="deleteModal" class="w3-modal">
+			    <div class="modalBox w3-modal-content w3-card-8">
+					<div class="w3-padding w3-center">
+						<span id="exitDelete" class="w3-closebtn w3-container w3-padding-8 w3-display-topright" title="Close, and do not delete">
+							<i class="fa fa-times"></i>
+						</span>
+						<br>
+						<span id="delInfo" class="red"></span>
+						<h2 id="dEmo" title="" ></h2>
+						<p>
+							Are you sure you want to delete this emoticon from the database?
+						</p>
+						<p>
+							<button id="yes" class="wideBtn" title="Delete this emoticon" >Yes</button>
+							<button id="no" class="wideBtn" title="Do not delete this emoticon" >No</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Add new Emoticon: -->
+			<div class="w3-container w3-section">
+				<h2>
+					<button id="add" title="Add emoticon to database">Add</button>
+					<input id="aEmo" class="wideInpt w3-center" type="text" placeholder="¯\_(ツ)_/¯" title="Type your emoticon here" />
+				</h2>
+				<div>
+					<label>Description: </label>
+					<input id="aDes" type="text" placeholder="Shrug" title="Describe your emoticon here" />
+				</div>
+			</div>
+			
+			<!-- All current Emoticons: -->
+			<div id="emoticons" class="w3-container w3-section">
+				
+				
+				
+			</div>
+			
+		</div>
+		
+		<div id="pageFooter" class="w3-container w3-center w3-margin-top">
+		
+			<p><i>apps.thomsmed.com</i> | <i>apps.statictomato.com</i></p>
+			<p>
+				<a href="http://www.w3schools.com/w3css/"><i>W3.CSS</i></a>
+				<a href="http://fontawesome.io/"><i>Font Awesome</i></a>
+			</p>
+		
+		</div>
+	
+	</div>
+	
+	</div>
+
+</body>
+
+</html>

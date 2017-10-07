@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	
+	<script type="text/javascript" src="script/ajax/ajax.js"></script>
+	<script type="text/javascript" src="script/ajax/ajax-periodic.js"></script>
+	<script type="text/javascript" src="script/model/emoticon.js"></script>
+	<script type="text/javascript" src="script/model/updates.js"></script>
+	<script type="text/javascript" src="script/service/emoticon-service.js"></script>
+	
+	<title>Service Test</title>
+
+</head>
+<body>
+	<fieldset>
+		<legend>Add:</legend>
+			Emoticon:<input id="addEmo" type="text"/>
+			Description:<input id="addDes" type="text"/>
+			<button id="add">Add</button>
+	</fieldset>
+	<fieldset>
+		<legend>Get:</legend>
+			Id:<input id="getId" type="text">
+			<button id="get">Get</button>
+	</fieldset>
+	<fieldset>
+		<legend>Update:</legend>
+			Id:<input id="updId" type="text">
+			Emoticon:<input id="updEmo" type="text"/>
+			Description:<input id="updDes" type="text"/>
+			<button id="update">Update</button>
+	</fieldset>
+	<fieldset>
+		<legend>Delete:</legend>
+			Id:<input id="delId" type="text">
+			<button id="del">Delete</button>
+	</fieldset>
+	<fieldset>
+		<legend>Start/Stop periodic:</legend>
+			<button id="start">Start</button><button id="stop">Stop</button>
+	</fieldset>
+	<label>Response:</label>
+	<fieldset>
+		<legend>Updates:</legend>
+			LogId:<input id="logId" type="text">
+			<button id="log">Get Updates</button>
+	</fieldset>
+	<label>Response:</label>
+	<p><textarea id="textArea" rows="20" cols="100"></textarea></p>
+</body>
+
+<script type="text/javascript">
+	"use strict"
+	
+	let service = new EmoticonService();
+	
+	let textArea = document.getElementById("textArea");
+	
+	let addEmo = document.getElementById("addEmo");
+	let addDes = document.getElementById("addDes");
+	let add = document.getElementById("add");
+	
+	let getId = document.getElementById("getId");
+	let get = document.getElementById("get");
+	
+	let updId = document.getElementById("updId");
+	let updEmo = document.getElementById("updEmo");
+	let updDes = document.getElementById("updDes");
+	let update = document.getElementById("update");
+	
+	let delId = document.getElementById("delId");
+	let del = document.getElementById("del");
+	
+	let logId = document.getElementById("logId");
+	let log = document.getElementById("log");
+	
+	let start = document.getElementById("start");
+	let stop = document.getElementById("stop");
+	
+	let requestCounter = 0;
+	
+	let init = function() {
+		
+		add.addEventListener("click",function() {
+			service.addEmoticon(new Emoticon(null,addEmo.value,addDes.value));
+		});
+		
+		get.addEventListener("click",function() {
+			service.getEmoticon(getId.value);
+		});
+		
+		update.addEventListener("click",function() {
+			service.updateEmoticon(updId.value,new Emoticon(null,updEmo.value,updDes.value));
+		});
+		
+		del.addEventListener("click",function() {
+			service.deleteEmoticon(delId.value);
+		});
+		
+		log.addEventListener("click",function() {
+			service.getUpdates(logId.value);
+		});
+		
+		start.addEventListener("click",function() {
+			service.startAJAXPeriodic();
+		});
+		
+		stop.addEventListener("click",function() {
+			service.stopAJAXPeriodic();
+		});
+		
+		service.getLogId = function() {
+			return logId.value;
+		}
+		
+		service.responseReceived = function(response) {
+			let text = response.status + " : " + response.statusText + " : Request nr.: = " + ++requestCounter;
+			text += "\n\n" + response.responseText;
+			textArea.value = text;
+		}
+		
+		service.periodicReceived = function(response) {
+			let text = response.status + " : " + response.statusText + " : Request nr.: = " + ++requestCounter;
+			text += "\n\n" + response.responseText;
+			textArea.value = text;
+		}
+		
+		service.requestFailure = function(response) {
+			let text = response.status + " : " + response.statusText + " : Request nr.: = " + ++requestCounter;
+			text += "\n\n" + response.responseText;
+			textArea.value = text;
+		}
+		
+		service.connect();
+	}
+	
+	document.addEventListener("DOMContentLoaded",init);
+
+</script>
+
+</html>
